@@ -27,14 +27,13 @@ IUSE=""
 
 DEPEND="app-text/xmlto"
 RDEPEND=""
-RESTRICT_PYTHON_ABIS="2.5 3.*"
-
 PYTHON_MODNAME="WebappConfig"
 
-src_compile() {
-	distutils_src_compile
+src_compile() {	
+	BUILD_DIR="/var/tmp/portage/app-admin/webapp-config-9999/work/webapp-config-9999"
+	distutils-r1_python_compile
 	#parallel build fixed in next release
-	emake -C doc/
+	emake -j1 -C doc/
 }
 
 src_install() {
@@ -43,8 +42,9 @@ src_install() {
 	# distutils does not provide for specifying two different script install
 	# locations. Since we only install one script here the following should
 	# be ok
-	distutils_src_install --install-scripts="/usr/sbin"
+	python_export python2_7 EPYTHON PYTHON
 
+	distutils-r1_python_install --install-scripts="/usr/sbin"
 	insinto /etc/vhosts
 	doins config/webapp-config
 
@@ -64,7 +64,7 @@ src_test() {
 }
 
 pkg_postinst() {
-	distutils_pkg_postinst
+	#distutils-r1_pkg_postinst
 
 	elog "Now that you have upgraded webapp-config, you **must** update your"
 	elog "config files in /etc/vhosts/webapp-config before you emerge any"
