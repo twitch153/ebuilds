@@ -1,6 +1,5 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/webapp-config/webapp-config-1.50.19.ebuild,v 1.4 2012/06/28 23:28:24 blueness Exp $
 
 EAPI="5"
 
@@ -30,19 +29,13 @@ RDEPEND=""
 PYTHON_MODNAME="WebappConfig"
 
 src_compile() {	
-	BUILD_DIR="/var/tmp/portage/app-admin/webapp-config-9999/work/webapp-config-9999"
+	BUILD_DIR="${WORKDIR}/${P}_build"
 	distutils-r1_python_compile
-	#parallel build fixed in next release
-	emake -j1 -C doc/
+	emake -C doc/
 }
 
 src_install() {
-	# According to this discussion:
-	# http://mail.python.org/pipermail/distutils-sig/2004-February/003713.html
-	# distutils does not provide for specifying two different script install
-	# locations. Since we only install one script here the following should
-	# be ok
-	python_export python2_7 EPYTHON PYTHON
+	python_export_best
 
 	distutils-r1_python_install --install-scripts="/usr/sbin"
 	insinto /etc/vhosts
@@ -57,14 +50,12 @@ src_install() {
 }
 
 src_test() {
-	testing() {
-		PYTHONPATH="." "$(PYTHON)" WebappConfig/tests/dtest.py
-	}
-	python_execute_function testing
+	PYTHONPATH="." "$(PYTHON)" WebappConfig/tests/dtest.py \
+		|| die "Tests fail with ${EPYTHON}";
 }
 
 pkg_postinst() {
-	#distutils-r1_pkg_postinst
+	distutils-r1_pkg_postinst
 
 	elog "Now that you have upgraded webapp-config, you **must** update your"
 	elog "config files in /etc/vhosts/webapp-config before you emerge any"
