@@ -49,7 +49,7 @@ src_install() {
 	dohtml doc/*.[58].html
 }
 
-src_test() {
+python_test() {
 	PYTHONPATH="." "${PYTHON}" WebappConfig/tests/dtest.py \
 		|| die "Tests fail with ${EPYTHON}";
 }
