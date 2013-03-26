@@ -50,7 +50,7 @@ src_install() {
 }
 
 src_test() {
-	PYTHONPATH="." "$(PYTHON)" WebappConfig/tests/dtest.py \
+	PYTHONPATH="." "$(python)" WebappConfig/tests/dtest.py \
 		|| die "Tests fail with ${EPYTHON}";
 }
 
