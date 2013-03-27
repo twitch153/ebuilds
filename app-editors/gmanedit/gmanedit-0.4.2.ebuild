@@ -8,11 +8,11 @@ DESCRIPTION="An editor for man pages that runs on X using the GTK+ libraries."
 HOMEPAGE="http://gmanedit.sourceforge.net/"
 SRC_URI="http://sourceforge.net/projects/${PN}2/files/${PN}/${P}/${P}.tar.gz"
 
-LICENSE="GPL"
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
 DEPEND=""
-RDEPEND="${DEPEND}"
-
+RDEPEND="${DEPEND}
+	>=x11-libs/gtk+-2.24.12"
