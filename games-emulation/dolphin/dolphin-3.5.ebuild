@@ -26,7 +26,7 @@ DEPEND="app-arch/zip
 	bluetooth? ( net-wireless/bluez )
 	ffmpeg? ( virtual/ffmpeg )
 	openal? ( media-libs/openal )
-    pulseaudio? ( media-audio/pulseaudio )
+    pulseaudio? ( media-sound/pulseaudio )
 	"
 RDEPEND="${DEPEND}"
 
