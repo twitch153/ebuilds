@@ -32,7 +32,7 @@ RDEPEND="${DEPEND}"
 
 src_install() {
 	cmake-utils_src_install
-	doicon "${S}/Installer/${PN}.ico"
+	doicon "${S}/Installer/Dolphin.ico"
 	make_desktop_entry "dolphin-emu" "Doplhin-Emu" "${PN}.ico" "Dolphin;Games;Emulator"
 
 }
