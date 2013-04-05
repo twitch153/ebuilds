@@ -1,5 +1,5 @@
 --- CMakeCache.txt	2013-03-29 18:25:15.955324590 -0400
-+++ CMakeCache.txt.CG	2013-03-29 18:24:56.284326657 -0400
++++ CMakeCache.txt	2013-03-29 18:24:56.284326657 -0400
 @@ -21,16 +21,16 @@
  ALSA_LIBRARY:FILEPATH=/usr/lib64/libasound.so
  
