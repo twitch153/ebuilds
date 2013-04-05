@@ -22,6 +22,12 @@ PATCHES=(
     "${FILESDIR}/${P}-cg-toolkit-lib-include-dirs.patch"
 	)
 
+src_unpack() {
+	cmake-utils_src_unpack
+	cd "${S}"
+	epatch "${FILESDIR}/${P}-cg-toolkit-lib-include-dirs.patch"
+}
+
 src_install() {
 	cmake-utils_src_install
 }
