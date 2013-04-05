@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit eutils cmake-utils
+inherit cmake-utils
 
 DESCRIPTION="Dolphin is a Gamecube and Wii game emulator"
 HOMEPAGE="http://www.dolphin-emulator.com/"
@@ -17,16 +17,6 @@ IUSE=""
 
 DEPEND=""
 RDEPEND="${DEPEND}"
-
-PATCHES=(
-    "${FILESDIR}/${P}-cg-toolkit-lib-include-dirs.patch"
-	)
-
-src_unpack() {
-	cmake-utils_src_unpack
-	cd "${S}"
-	epatch "${FILESDIR}/${P}-cg-toolkit-lib-include-dirs.patch"
-}
 
 src_install() {
 	cmake-utils_src_install
