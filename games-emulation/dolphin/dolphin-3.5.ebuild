@@ -13,9 +13,21 @@ SRC_URI="http://${PN}-emu.googlecode.com/files/${P}-src.zip"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
+IUSE="alsa ao bluetooth ffmpeg openal pulseaudio"
 
-DEPEND=""
+DEPEND="app-arch/zip
+	media-gfx/nvidia-cg-toolkit
+	media-libs/freetype
+	sys-libs/readline
+	>=x11-libs/wxGTK-2.9.3.1
+	x11-libs/libXext
+	alsa? ( media-libs/alsa-lib )
+	ao? ( media-libs/libao )
+	bluetooth? ( net-wireless/bluez )
+	ffmpeg? ( virtual/ffmpeg )
+	openal? ( media-libs/openal )
+    pulseaudio? ( media-audio/pulseaudio )
+	"
 RDEPEND="${DEPEND}"
 
 src_install() {
