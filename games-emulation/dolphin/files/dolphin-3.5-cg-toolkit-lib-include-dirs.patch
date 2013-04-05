@@ -1,0 +1,50 @@
+--- CMakeCache.txt	2013-03-29 18:25:15.955324590 -0400
++++ CMakeCache.txt.CG	2013-03-29 18:24:56.284326657 -0400
+@@ -21,16 +21,16 @@
+ ALSA_LIBRARY:FILEPATH=/usr/lib64/libasound.so
+ 
+ //Path to a library.
+-CG:FILEPATH=/usr/lib64/libCg.so
++CG:FILEPATH=/opt/nvidia-cg-toolkit/lib64/libCg.so
+ 
+ //Path to a library.
+-CGGL:FILEPATH=/usr/lib64/libCgGL.so
++CGGL:FILEPATH=/opt/nvidia-cg-toolkit/lib64/libCgGL.so
+ 
+ //Path to a file.
+-CGGL_INCLUDE:PATH=CGGL_INCLUDE-NOTFOUND
++CGGL_INCLUDE:PATH=/opt/nvidia-cg-toolkit/include/
+ 
+ //Path to a file.
+-CG_INCLUDE:PATH=CG_INCLUDE-NOTFOUND
++CG_INCLUDE:PATH=/opt/nvidia-cg-toolkit/include/
+ 
+ //Path to a program.
+ CMAKE_AR:FILEPATH=/usr/bin/ar
+@@ -690,7 +690,7 @@
+ CGGL_CFLAGS:INTERNAL=
+ CGGL_CFLAGS_I:INTERNAL=
+ CGGL_CFLAGS_OTHER:INTERNAL=
+-CGGL_FOUND:INTERNAL=
++CGGL_FOUND:INTERNAL=1
+ CGGL_INCLUDEDIR:INTERNAL=
+ CGGL_LIBDIR:INTERNAL=
+ CGGL_LIBS:INTERNAL=
+@@ -714,7 +714,7 @@
+ CG_CFLAGS:INTERNAL=
+ CG_CFLAGS_I:INTERNAL=
+ CG_CFLAGS_OTHER:INTERNAL=
+-CG_FOUND:INTERNAL=
++CG_FOUND:INTERNAL=1
+ CG_INCLUDEDIR:INTERNAL=
+ CG_LIBDIR:INTERNAL=
+ CG_LIBS:INTERNAL=
+@@ -1126,7 +1126,7 @@
+ PULSEAUDIO_libpulse_LIBDIR:INTERNAL=
+ PULSEAUDIO_libpulse_PREFIX:INTERNAL=
+ PULSEAUDIO_libpulse_VERSION:INTERNAL=
+-SDL_LIBRARY_TEMP:INTERNAL=/usr/lib64/libSDLmain.a;/usr/lib64/libSDL.so;-pthread
++SDL_LIBRARY_TEMP:INTERNAL=/usr/lib64/libSDLmain.a;/usr/lib64/libSDLmain.a;/usr/lib64/libSDL.so;-pthread;-pthread
+ SOIL_CFLAGS:INTERNAL=
+ SOIL_CFLAGS_I:INTERNAL=
+ SOIL_CFLAGS_OTHER:INTERNAL=
