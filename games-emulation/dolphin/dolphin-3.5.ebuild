@@ -30,8 +30,12 @@ DEPEND="app-arch/zip
 	"
 RDEPEND="${DEPEND}"
 
+src_compile() {
+	append-ldflags -L/opt/nvidia-cg-toolkit/lib
+	cmake-utils_src_compile
+}
+
 src_install() {
-    append-ldflags -L/opt/nvidia-cg-toolkit/lib
 	cmake-utils_src_install
 	doicon "${S}/Installer/Dolphin.ico"
 	make_desktop_entry "Dolphin-emu" "doplhin-emu" "dolphin.ico" "Dolphin;Games;Emulator"
