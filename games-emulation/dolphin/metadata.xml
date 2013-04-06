@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<longdescription lang="en">
+Dolphin is a Gamecube and Wii emulator. Most games run perfectly or with minor
+bugs. Games are playable at HD quality, with 1080p and more. This is a
+remarkable feature the actual Gamecube and Wii consoles are not capable of.
+</longdescription>
+    <maintainer>
+		<email>twitch153@hotmail.com</email>
+		<name>Devan Franchini</name>
+	</maintainer>
+</pkgmetadata>
+
