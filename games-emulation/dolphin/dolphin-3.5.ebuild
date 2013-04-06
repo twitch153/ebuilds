@@ -32,6 +32,7 @@ RDEPEND="${DEPEND}"
 
 src_compile() {
 	append-ldflags -L/opt/nvidia-cg-toolkit/lib
+	append-flags -I/opt/nvidia-cg-toolkit/include
 	cmake-utils_src_compile
 }
 
