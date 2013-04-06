@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit cmake-utils
+inherit cmake-utils flag-o-matic
 
 DESCRIPTION="Dolphin is a Gamecube and Wii game emulator"
 HOMEPAGE="http://www.dolphin-emulator.com/"
@@ -38,6 +38,4 @@ src_compile() {
 src_install() {
 	cmake-utils_src_install
 	doicon "${S}/Installer/Dolphin.ico"
-	make_desktop_entry "Dolphin-emu" "doplhin-emu" "dolphin.ico" "Dolphin;Games;Emulator"
-
 }
