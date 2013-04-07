@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit cmake-utils flag-o-matic
+inherit cmake-utils eutils flag-o-matic
 
 DESCRIPTION="Dolphin is a Gamecube and Wii game emulator"
 HOMEPAGE="http://www.dolphin-emulator.com/"
@@ -30,13 +30,25 @@ DEPEND="app-arch/zip
 	"
 RDEPEND="${DEPEND}"
 
+src_configure() {
+	append-ldflags -L/opt/nvidia-cg-toolkit/lib64
+	append-cppflags -I/opt/nvidia-cg-toolkit/include
+	cmake-utils_src_configure
+}
+
 src_compile() {
 	append-ldflags -L/opt/nvidia-cg-toolkit/lib64
-	append-flags -I/opt/nvidia-cg-toolkit/include
-	#cmake-utils_src_compile
+	append-cppflags -I/opt/nvidia-cg-toolkit/include
+	cmake-utils_src_compile
 }
 
 src_install() {
 	cmake-utils_src_install
 	doicon "${S}/Installer/Dolphin.ico"
+}
+
+pkg_postinst() {
+	ewarn "The desktop entry for dolphin-3.5 is not being created correctly."
+	ewarn "You can access it through a terminal by running: \"dolphin-emu\"."
+	ewarn "Or by creating your own desktop entry."
 }
