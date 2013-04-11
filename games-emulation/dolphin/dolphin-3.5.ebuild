@@ -45,6 +45,8 @@ src_compile() {
 src_install() {
 	cmake-utils_src_install
 	doicon "${S}/Installer/Dolphin.ico"
+	dodoc  ActionReplay DSP WiiMote
+	dodoc -r doc/
 }
 
 pkg_postinst() {
