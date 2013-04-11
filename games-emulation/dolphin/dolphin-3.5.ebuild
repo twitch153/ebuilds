@@ -45,7 +45,6 @@ src_compile() {
 src_install() {
 	cmake-utils_src_install
 	doicon "${S}/Installer/Dolphin.ico"
-	dodoc -r doc/
 }
 
 pkg_postinst() {
