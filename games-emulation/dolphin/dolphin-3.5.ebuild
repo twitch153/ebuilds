@@ -44,7 +44,8 @@ src_compile() {
 
 src_install() {
 	cmake-utils_src_install
-	doicon "${S}/Installer/Dolphin.ico"
+	doicon Source/Core/DolphinWX/resources/Dolphin.xpm
+	make_desktop_entry "${PN}" "Dolphin" "Dolphin" "Game;Emulator"
 }
 
 pkg_postinst() {
