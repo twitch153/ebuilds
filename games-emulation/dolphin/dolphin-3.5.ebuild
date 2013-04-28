@@ -47,9 +47,3 @@ src_install() {
 	doicon Source/Core/DolphinWX/resources/Dolphin.xpm
 	make_desktop_entry "dolphin-emu" "${PN}" "Dolphin" "Game;"
 }
-
-pkg_postinst() {
-	ewarn "The desktop entry for dolphin-3.5 is not being created correctly."
-	ewarn "You can access it through a terminal by running: \"dolphin-emu\"."
-	ewarn "Or by creating your own desktop entry."
-}
