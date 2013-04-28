@@ -45,7 +45,7 @@ src_compile() {
 src_install() {
 	cmake-utils_src_install
 	doicon Source/Core/DolphinWX/resources/Dolphin.xpm
-	make_desktop_entry "Dolphin" "Dolphin" "Game;Emulator"
+	make_desktop_entry "dolphin-emu" "${PN}" "Dolphin" "Game;"
 }
 
 pkg_postinst() {
