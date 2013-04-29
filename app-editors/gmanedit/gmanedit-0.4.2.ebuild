@@ -6,7 +6,7 @@ EAPI=5
 
 DESCRIPTION="An editor for man pages that runs on X using the GTK+ libraries."
 HOMEPAGE="http://gmanedit.sourceforge.net/"
-SRC_URI="http://sourceforge.net/projects/${PN}2/files/${PN}/${P}/${P}.tar.gz"
+SRC_URI="mirror://sourceforge.net/${PN}2/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
