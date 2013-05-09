@@ -35,7 +35,7 @@ src_configure() {
 	if has_version ">=media-gfx/nvidia-cg-toolkit-3.1.0013" ; then
 		append-ldflags -L/opt/nvidia-cg-toolkit/lib64
 	fi
-	if has_version "<=nvidia-cg-toolkit-2.1.0017-r1" ; then
+	if has_version "<=media-gfx/nvidia-cg-toolkit-2.1.0017-r1" ; then
 		append-ldflags -L/opt/nvidia-cg-toolkit/lib
 	fi
 	append-cppflags -I/opt/nvidia-cg-toolkit/include
