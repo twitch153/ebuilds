@@ -43,7 +43,7 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	
-	if has_version "sys-devel/gcc-4.8.0"; then
+	if has_version "=sys-devel/gcc-4.8.0"; then
 		epatch "${FILESDIR}"/${PN}-emu-${PV}-gcc-4.8.patch
 	fi
 
