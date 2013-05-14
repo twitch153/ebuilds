@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit cmake-utils eutils flag-o-matic pax-utils
+inherit cmake-utils eutils flag-o-matic pax-utils games
 
 DESCRIPTION="Dolphin is a Gamecube and Wii game emulator"
 HOMEPAGE="http://www.dolphin-emulator.com/"
@@ -13,7 +13,7 @@ SRC_URI="http://${PN}-emu.googlecode.com/files/${P}-src.zip"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="alsa ao bluetooth docs ffmpeg lzo openal opengl portaudio pulseaudio"
+IUSE="alsa ao bluetooth docs ffmpeg lzo openal opengl openmp portaudio pulseaudio"
 
 RDEPEND=">=media-libs/glew-1.6
 	>=media-libs/libsdl-1.2[joystick]
@@ -58,6 +58,16 @@ src_configure() {
 			append-ldflags "-L/opt/nvidia-cg-toolkit/lib"
 		fi
 	fi
+	
+	local mycmakeargs=(
+			"-DDOLPHIN_WC_REVISION=${PV}"
+			"-DCMAKE_INSTALL_PREFIX=${GAMES_PREFIX}"
+			"-Dprefix=${GAMES_PREFIX}"
+			"-Ddatadir=${GAMES_DATADIR}/${PN}"
+			"-Dplugindir=$(games_get_libdir)/${PN}"
+			$(cmake-utils_use ffmpeg ENCODE_FRAMEDUMPS)
+			$(cmake-utils_use openmp OPENMP )
+	)
 
 	cmake-utils_src_configure
 }
@@ -73,11 +83,13 @@ src_install() {
 
 	doicon Source/Core/DolphinWX/resources/Dolphin.xpm
 	make_desktop_entry "dolphin-emu" "Dolphin" "Dolphin" "Game;"
+
+	prepgamesdirs
 }
 
 pkg_postinst() {
 	# Add pax markings for hardened systems
-	pax-mark -m "${EPREFIX}"/usr/bin/"${PN}"-emu
+	pax-mark -m "${EPREFIX}"/usr/games/bin/"${PN}"-emu
 
 	if !use portaudio; then
 		ewarn "If you want microphone capabilities in dolphin-emu, rebuild with
