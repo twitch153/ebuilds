@@ -13,7 +13,7 @@ SRC_URI="http://${PN}-emu.googlecode.com/files/${P}-src.zip"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="alsa ao bluetooth ffmpeg openal pulseaudio"
+IUSE="alsa ao bluetooth docs ffmpeg openal pulseaudio"
 
 DEPEND="app-arch/zip
 	media-gfx/nvidia-cg-toolkit
@@ -46,15 +46,23 @@ src_compile() {
 	if has_version ">=media-gfx/nvidia-cg-toolkit-3.1.0013" ; then
 		append-ldflags -L/opt/nvidia-cg-toolkit/lib64
 	fi
+
 	if has_version "<=media-gfx/nvidia-cg-toolkit-2.1.0017-r1" ; then
 		append-ldflags -L/opt/nvidia-cg-toolkit/lib
 	fi
+
 	append-cppflags -I/opt/nvidia-cg-toolkit/include
 	cmake-utils_src_compile
 }
 
 src_install() {
 	cmake-utils_src_install
+	
+	if use docs; then
+		insinto "${GAMES_DATADIR}/${PN}"
+		doins -r "${S}/docs"/*
+	fi
+
 	doicon Source/Core/DolphinWX/resources/Dolphin.xpm
 	make_desktop_entry "dolphin-emu" "Dolphin" "Dolphin" "Game;"
 }
