@@ -13,15 +13,22 @@ SRC_URI="http://${PN}-emu.googlecode.com/files/${P}-src.zip"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="alsa ao bluetooth docs ffmpeg openal pulseaudio"
+IUSE="alsa ao bluetooth docs ffmpeg lzo openal opengl pulseaudio"
 
-RDEPEND=">=x11-libs/wxGTK-2.9.3.1
+RDEPEND=">=media-libs/glew-1.6
+	>=media-libs/libsdl-1.2[joystick]
+	<media-libs/libsfml-2.0
+	sys-libs/readline
+	>=x11-libs/wxGTK-2.9.3.1
 	x11-libs/libXext
+	x11-libs/libXrander
 	alsa? ( media-libs/alsa-lib )
 	ao? ( media-libs/libao )
 	bluetooth? ( net-wireless/bluez )
 	ffmpeg? ( virtual/ffmpeg )
+	lzo? ( dev-libs/lzo )
 	openal? ( media-libs/openal )
+	opengl? ( virtual/opengl )
 	pulseaudio? ( media-sound/pulseaudio )
 	"
 DEPEND="${RDEPEND}
@@ -29,8 +36,8 @@ DEPEND="${RDEPEND}
     media-gfx/nvidia-cg-toolkit
 	media-libs/freetype
 	>=sys-devel/gcc-4.6.0
+	sys-devel/gettext
 	virtual/pkgconfig
-	sys-libs/readline
 	"
 
 src_configure() {
