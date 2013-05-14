@@ -64,6 +64,6 @@ src_install() {
 	fi
 
 	#doicon Source/Core/DolphinWX/resources/Dolphin.xpm
-	doicon "${FILESDIR}/dolphin-emu.png"
+	doicon Installer/Dolphin.ico
 	make_desktop_entry "dolphin-emu" "Dolphin" "Dolphin" "Game;"
 }
