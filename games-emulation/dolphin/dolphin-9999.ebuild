@@ -23,12 +23,7 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="alsa ao bluetooth ffmpeg openal pulseaudio"
 
-DEPEND="app-arch/zip
-	media-gfx/nvidia-cg-toolkit
-	media-libs/freetype
-	>=sys-devel/gcc-4.6.0
-	sys-libs/readline
-	>=x11-libs/wxGTK-2.9.3.1
+RDEPEND=">=x11-libs/wxGTK-2.9.3.1
 	x11-libs/libXext
 	alsa? ( media-libs/alsa-lib )
 	ao? ( media-libs/libao )
@@ -37,7 +32,13 @@ DEPEND="app-arch/zip
 	openal? ( media-libs/openal )
 	pulseaudio? ( media-sound/pulseaudio )
 	"
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	app-arch/zip
+	media-gfx/nvidia-cg-toolkit
+	media-libs/freetype
+	>=sys-devel/gcc-4.6.0
+	sys-libs/readline
+	"
 
 src_install() {
 	cmake-utils_src_install
