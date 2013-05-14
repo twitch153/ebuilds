@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit cmake-utils
+inherit cmake-utils eutils games
 
 if [[ ${PV} == 9999* ]]
 then
@@ -111,6 +111,8 @@ src_install() {
 	fi
 
 	doicon "${S}/Installer/Dolphin.ico"
+
+	prepgamesdirs
 }
 
 pkg_postinst() {
