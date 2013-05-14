@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit cmake-utils eutils games
+inherit cmake-utils eutils pax-utils games
 
 if [[ ${PV} == 9999* ]]
 then
@@ -93,9 +93,9 @@ src_configure() {
 		"-DCMAKE_INSTALL_PREFIX=${GAMES_PREFIX}"
 		"-Dprefix=${GAMES_PREFIX}"
 		"-Ddatadir=${GAMES_DATADIR}/${PN}"
-		"-Dplugindir-$(games_get_libdir)/${PN}"
-		$(cmake-utils_use ffmpeg ENCODE_FRAMEDUMPS)
-		$(cmake-utils_use openmp OPENMP )
+		"-Dplugindir=$(games_get_libdir)/${PN}"
+		$( cmake-utils_use ffmpeg ENCODE_FRAMEDUMPS )
+		$( cmake-utils_use openmp OPENMP )
 	)
 
 	cmake-utils_src_configure
