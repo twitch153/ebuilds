@@ -91,7 +91,7 @@ pkg_postinst() {
 	# Add pax markings for hardened systems
 	pax-mark -m "${EPREFIX}"/usr/games/bin/"${PN}"-emu
 
-	if !use portaudio; then
+	if ! use portaudio; then
 		ewarn "If you want microphone capabilities in dolphin-emu, rebuild with
 		USE=\"portaudio\""
 	fi
