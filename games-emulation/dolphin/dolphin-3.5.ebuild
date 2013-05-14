@@ -29,6 +29,7 @@ DEPEND="${RDEPEND}
     media-gfx/nvidia-cg-toolkit
 	media-libs/freetype
 	>=sys-devel/gcc-4.6.0
+	virtual/pkgconfig
 	sys-libs/readline
 	"
 
