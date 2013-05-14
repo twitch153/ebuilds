@@ -84,6 +84,9 @@ src_prepare() {
 	mv CLRun Externals || die
 	mv Bochs_disasm Externals || die
 	mv SOIL Externals || die
+}
+
+src_configure() {
 
 	local mycmakeargs=(
 		"-DDOLPHIN_WC_REVISION=${PV}"
