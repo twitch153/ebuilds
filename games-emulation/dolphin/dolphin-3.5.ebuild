@@ -92,7 +92,7 @@ pkg_postinst() {
 	pax-mark -m "${EPREFIX}"/usr/games/bin/"${PN}"-emu
 
 	if ! use portaudio; then
-		ewarn "If you want microphone capabilities in dolphin-emu, rebuild with
-		USE=\"portaudio\""
+		ewarn "If you want microphone capabilities in dolphin-emu, rebuild with"
+		ewarn "USE=\"portaudio\""
 	fi
 }
