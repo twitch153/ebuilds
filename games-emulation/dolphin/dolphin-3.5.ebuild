@@ -34,27 +34,24 @@ DEPEND="${RDEPEND}
 	"
 
 src_configure() {
-	if has_version ">=media-gfx/nvidia-cg-toolkit-3.1.0013" ; then
-		append-ldflags -L/opt/nvidia-cg-toolkit/lib64
+	
+	if $($(tc-getPKG_CONFIG) --exists nvidia-cg-toolkit); then
+		append-flags "$($(tc-getPKG_CONFIG) --cflags nvidia-cg-toolkit)"
+	else
+		append-flags "-I/opt/nvidia-cg-toolkit/include"
 	fi
-	if has_version "<=media-gfx/nvidia-cg-toolkit-2.1.0017-r1" ; then
-		append-ldflags -L/opt/nvidia-cg-toolkit/lib
+
+	if $($(tc-getPKG_CONFIG) --exists nvidia-cg-toolkit); then
+		append-ldflags "$($(tc-getPKG_CONFIG) --libs-only-L nvidia-cg-toolkit)"
+	else
+		if has_version ">=media-gfx/nvidia-cg-toolkit-3.1.0013"; then
+			append-ldflags "-L/opt/nvidia-cg-toolkit/lib64"
+		elif has_version "<=media-gfx/nvidia-cg-toolkit-2.1.0017-r1"; then
+			append-ldflags "-L/opt/nvidia-cg-toolkit/lib"
+		fi
 	fi
-	append-cppflags -I/opt/nvidia-cg-toolkit/include
+
 	cmake-utils_src_configure
-}
-
-src_compile() {
-	if has_version ">=media-gfx/nvidia-cg-toolkit-3.1.0013" ; then
-		append-ldflags -L/opt/nvidia-cg-toolkit/lib64
-	fi
-
-	if has_version "<=media-gfx/nvidia-cg-toolkit-2.1.0017-r1" ; then
-		append-ldflags -L/opt/nvidia-cg-toolkit/lib
-	fi
-
-	append-cppflags -I/opt/nvidia-cg-toolkit/include
-	cmake-utils_src_compile
 }
 
 src_install() {
