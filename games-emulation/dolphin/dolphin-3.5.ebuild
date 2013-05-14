@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit cmake-utils eutils flag-o-matic
+inherit cmake-utils eutils flag-o-matic pax-utils
 
 DESCRIPTION="Dolphin is a Gamecube and Wii game emulator"
 HOMEPAGE="http://www.dolphin-emulator.com/"
@@ -59,9 +59,9 @@ src_compile() {
 src_install() {
 	cmake-utils_src_install
 	
+	dodoc Readme.txt
 	if use docs; then
-		insinto "${GAMES_DATADIR}/${PN}"
-		doins -r "${S}/docs"/*
+		doins -r docs
 	fi
 
 	doicon Source/Core/DolphinWX/resources/Dolphin.xpm
