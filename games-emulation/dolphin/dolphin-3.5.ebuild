@@ -67,7 +67,9 @@ src_prepare() {
 	# - Bochs_disasm (Don't know what it is).
 	mv Externals/SOIL . || die
 	mv Externals/Bochs_disasm . || die
+	mv Externals/CLRun . || die
 	rm -r Externals/* || die "Failed to remove bundled libs"
+	mv CLRun Externals || die
 	mv Bochs_disasm Externals || die
 	mv SOIL Externals || die
 }
