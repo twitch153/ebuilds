@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit cmake-utils eutils flag-o-matic pax-utils games
+inherit cmake-utils eutils flag-o-matic pax-utils toolchain-funcs games
 
 DESCRIPTION="Dolphin is a Gamecube and Wii game emulator"
 HOMEPAGE="http://www.dolphin-emulator.com/"
@@ -61,6 +61,15 @@ src_prepare() {
 	if use !pulseaudio; then
 		sed -i -e '/^check_lib(PULSEAUDIO/d' CMakeLists.txt || die
 	fi
+
+	# Remove ALL the bundled libraries, aside from:
+	# - SOIL: The sources are not public.
+	# - Bochs_disasm (Don't know what it is).
+	mv Externals/SOIL . || die
+	mv Externals/Bochs_disasm . || die
+	rm -r Externals/* || die "Failed to remove bundled libs"
+	mv Bochs_disasm Externals || die
+	mv SOIL Externals || die
 }
 
 src_configure() {
