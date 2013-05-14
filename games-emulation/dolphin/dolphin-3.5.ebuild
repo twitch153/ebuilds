@@ -21,7 +21,7 @@ RDEPEND=">=media-libs/glew-1.6
 	sys-libs/readline
 	>=x11-libs/wxGTK-2.9.3.1
 	x11-libs/libXext
-	x11-libs/libXrander
+	x11-libs/libXrandr
 	alsa? ( media-libs/alsa-lib )
 	ao? ( media-libs/libao )
 	bluetooth? ( net-wireless/bluez )
