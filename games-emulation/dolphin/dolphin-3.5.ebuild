@@ -13,7 +13,7 @@ SRC_URI="http://${PN}-emu.googlecode.com/files/${P}-src.zip"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="alsa ao bluetooth docs ffmpeg lzo openal opengl pulseaudio"
+IUSE="alsa ao bluetooth docs ffmpeg lzo openal opengl portaudio pulseaudio"
 
 RDEPEND=">=media-libs/glew-1.6
 	>=media-libs/libsdl-1.2[joystick]
@@ -29,6 +29,7 @@ RDEPEND=">=media-libs/glew-1.6
 	lzo? ( dev-libs/lzo )
 	openal? ( media-libs/openal )
 	opengl? ( virtual/opengl )
+	portaudio?  ( media-libs/portaudio )
 	pulseaudio? ( media-sound/pulseaudio )
 	"
 DEPEND="${RDEPEND}
@@ -72,4 +73,14 @@ src_install() {
 
 	doicon Source/Core/DolphinWX/resources/Dolphin.xpm
 	make_desktop_entry "dolphin-emu" "Dolphin" "Dolphin" "Game;"
+}
+
+pkg_postinst() {
+	# Add pax markings for hardened systems
+	pax-mark -m "$EPREFIX}"/usr/bin/"${PN}"
+
+	if !use portaudio; then
+		ewarn "If you want microphone capabilities in dolphin-emu, rebuild with
+		USE=\"portaudio\""
+	fi
 }
