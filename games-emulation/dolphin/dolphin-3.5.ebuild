@@ -55,8 +55,9 @@ src_configure() {
 }
 
 src_install() {
+
 	cmake-utils_src_install
-	
+
 	dodoc Readme.txt
 	if use docs; then
 		doins -r docs
