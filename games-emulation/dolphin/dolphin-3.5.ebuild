@@ -41,6 +41,28 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	"
 
+src_prepare() {
+	# Remove automatic dependencies to prevent building without flags enabled.
+	if use !alsa; then
+		sed -i -e '/^include(FindALSA/d' CMakeLists.txt || die
+	fi
+	if use !ao; then
+		sed -i -e '/^check_lib(AO/d' CMakeLists.txt || die
+	fi
+	if use !bluetooth; then
+		sed -i -e '/^check_lib(BLUEZ/d' CMakeLists.txt || die
+	fi
+	if use !openal; then
+		sed -i -e '/^include(FindOpenAL/d' CMakeLists.txt || die
+	fi
+	if use !portaudio; then
+		sed -i -e '/CMAKE_REQUIRED_LIBRARIES portaudio/d' CMakeLists.txt || die
+	fi
+	if use !pulseaudio; then
+		sed -i -e '/^check_lib(PULSEAUDIO/d' CMakeLists.txt || die
+	fi
+}
+
 src_configure() {
 	
 	if $($(tc-getPKG_CONFIG) --exists nvidia-cg-toolkit); then
@@ -60,13 +82,13 @@ src_configure() {
 	fi
 	
 	local mycmakeargs=(
-			"-DDOLPHIN_WC_REVISION=${PV}"
-			"-DCMAKE_INSTALL_PREFIX=${GAMES_PREFIX}"
-			"-Dprefix=${GAMES_PREFIX}"
-			"-Ddatadir=${GAMES_DATADIR}/${PN}"
-			"-Dplugindir=$(games_get_libdir)/${PN}"
-			$(cmake-utils_use ffmpeg ENCODE_FRAMEDUMPS)
-			$(cmake-utils_use openmp OPENMP )
+		"-DDOLPHIN_WC_REVISION=${PV}"
+		"-DCMAKE_INSTALL_PREFIX=${GAMES_PREFIX}"
+		"-Dprefix=${GAMES_PREFIX}"
+		"-Ddatadir=${GAMES_DATADIR}/${PN}"
+		"-Dplugindir=$(games_get_libdir)/${PN}"
+		$(cmake-utils_use ffmpeg ENCODE_FRAMEDUMPS)
+		$(cmake-utils_use openmp OPENMP )
 	)
 
 	cmake-utils_src_configure
