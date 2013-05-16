@@ -21,7 +21,7 @@ RDEPEND=">=media-libs/glew-1.6
 	>=media-libs/libsdl-1.2[joystick]
 	<media-libs/libsfml-2.0
 	sys-libs/readline
-	>=x11-libs/wxGTK:2.9
+	x11-libs/wxGTK:2.9
 	x11-libs/libXext
 	x11-libs/libXrandr
 	alsa? ( media-libs/alsa-lib )
