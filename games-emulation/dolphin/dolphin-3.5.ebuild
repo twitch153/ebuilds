@@ -4,7 +4,9 @@
 
 EAPI=5
 
-inherit cmake-utils eutils flag-o-matic pax-utils toolchain-funcs games
+WX_GTK_VER="2.9"
+
+inherit cmake-utils eutils flag-o-matic pax-utils toolchain-funcs wxwidgets games
 
 DESCRIPTION="Dolphin is a Gamecube and Wii game emulator"
 HOMEPAGE="http://www.dolphin-emulator.com/"
@@ -13,13 +15,13 @@ SRC_URI="http://${PN}-emu.googlecode.com/files/${P}-src.zip"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="alsa ao bluetooth docs ffmpeg lzo openal opengl openmp portaudio pulseaudio"
+IUSE="alsa ao bluetooth docs ffmpeg +lzo openal opengl openmp portaudio pulseaudio"
 
 RDEPEND=">=media-libs/glew-1.6
 	>=media-libs/libsdl-1.2[joystick]
 	<media-libs/libsfml-2.0
 	sys-libs/readline
-	>=x11-libs/wxGTK-2.9.3.1
+	>=x11-libs/wxGTK:2.9
 	x11-libs/libXext
 	x11-libs/libXrandr
 	alsa? ( media-libs/alsa-lib )
