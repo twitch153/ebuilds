@@ -23,7 +23,7 @@ HOMEPAGE="http://www.dolphin-emulator.com/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="alsa ao bluetooth docs ffmpeg lzo openal opengl openmp portaudio pulseaudio"
+IUSE="alsa ao bluetooth docs ffmpeg +lzo openal opengl openmp portaudio pulseaudio"
 
 RDEPEND=">=media-libs/glew-1.6
 	>=media-libs/libsdl-1.2[joystick]
