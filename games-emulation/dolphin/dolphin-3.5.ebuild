@@ -21,7 +21,6 @@ RDEPEND=">=media-libs/glew-1.6
 	>=media-libs/libsdl-1.2[joystick]
 	<media-libs/libsfml-2.0
 	sys-libs/readline
-	x11-libs/wxGTK:2.9
 	x11-libs/libXext
 	x11-libs/libXrandr
 	alsa? ( media-libs/alsa-lib )
@@ -36,11 +35,12 @@ RDEPEND=">=media-libs/glew-1.6
 	"
 DEPEND="${RDEPEND}
 	app-arch/zip
-    media-gfx/nvidia-cg-toolkit
+	media-gfx/nvidia-cg-toolkit
 	media-libs/freetype
 	>=sys-devel/gcc-4.6.0
 	sys-devel/gettext
 	virtual/pkgconfig
+	x11-libs/wxGTK:2.9
 	"
 
 src_prepare() {
