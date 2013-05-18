@@ -45,6 +45,7 @@ DEPEND="${RDEPEND}
 	app-arch/zip
 	media-gfx/nvidia-cg-toolkit
 	media-libs/freetype
+	media-libs/libsoundtouch
 	>=sys-devel/gcc-4.6.0
 	x11-libs/wxGTK:2.9
 	"
