@@ -15,7 +15,7 @@ SRC_URI="http://${PN}-emu.googlecode.com/files/${P}-src.zip"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="alsa ao bluetooth docs ffmpeg +lzo openal opengl openmp portaudio pulseaudio"
+IUSE="alsa ao bluetooth doc ffmpeg +lzo openal opengl openmp portaudio pulseaudio"
 
 RDEPEND=">=media-libs/glew-1.6
 	>=media-libs/libsdl-1.2[joystick]
@@ -44,7 +44,7 @@ DEPEND="${RDEPEND}
 	"
 
 src_prepare() {
-	
+
 	if has_version "=sys-devel/gcc-4.8.0"; then
 		epatch "${FILESDIR}"/${PN}-emu-${PV}-gcc-4.8.patch
 	fi
@@ -83,7 +83,7 @@ src_prepare() {
 }
 
 src_configure() {
-	
+
 	if $($(tc-getPKG_CONFIG) --exists nvidia-cg-toolkit); then
 		append-flags "$($(tc-getPKG_CONFIG) --cflags nvidia-cg-toolkit)"
 	else
@@ -99,7 +99,7 @@ src_configure() {
 			append-ldflags "-L/opt/nvidia-cg-toolkit/lib"
 		fi
 	fi
-	
+
 	local mycmakeargs=(
 		"-DDOLPHIN_WC_REVISION=${PV}"
 		"-DCMAKE_INSTALL_PREFIX=${GAMES_PREFIX}"
