@@ -118,8 +118,8 @@ src_install() {
 	cmake-utils_src_install
 
 	dodoc Readme.txt
-	if use docs; then
-		doins -r docs
+	if use doc; then
+		doins -r doc
 	fi
 
 	doicon Source/Core/DolphinWX/resources/Dolphin.xpm
