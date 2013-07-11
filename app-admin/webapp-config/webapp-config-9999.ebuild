@@ -1,5 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Header: $
 
 EAPI="5"
 
@@ -28,7 +29,7 @@ DEPEND="app-text/xmlto"
 RDEPEND=""
 PYTHON_MODNAME="WebappConfig"
 
-src_compile() {	
+src_compile() {
 	BUILD_DIR="${WORKDIR}/${P}_build"
 	distutils-r1_python_compile
 	emake -C doc/
