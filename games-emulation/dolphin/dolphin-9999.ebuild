@@ -23,7 +23,7 @@ HOMEPAGE="http://www.dolphin-emulator.com/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="alsa ao bluetooth docs ffmpeg +lzo openal opengl openmp portaudio pulseaudio"
+IUSE="alsa ao bluetooth doc ffmpeg +lzo openal opengl openmp portaudio pulseaudio"
 
 RDEPEND=">=media-libs/glew-1.6
 	>=media-libs/libsdl-1.2[joystick]
@@ -58,7 +58,7 @@ src_prepare() {
 	if use !ao; then
 		sed -i -e '/^check_lib(AO/d' CMakeLists.txt || die
 	fi
-	if use !bluetooth; then 
+	if use !bluetooth; then
 		sed -i -e '/^check_lib(BLUEZ/d' CMakeLists.txt || die
 	fi
 	if use !openal; then
@@ -78,7 +78,7 @@ src_prepare() {
 	mv Externals/SOIL . || die
 	mv Externals/Bochs_disasm . || die
 	mv Externals/CLRun . || die
-	rm -r Externals/* || die 
+	rm -r Externals/* || die
 	mv CLRun Externals || die
 	mv Bochs_disasm Externals || die
 	mv SOIL Externals || die
