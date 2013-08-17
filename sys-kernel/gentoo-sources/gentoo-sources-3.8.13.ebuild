@@ -7,7 +7,7 @@ ETYPE="sources"
 K_WANT_GENPATCHES="base extras"
 K_GENPATCHES_VER="16"
 K_DEBLOB_AVAILABLE="1"
-inherit kernel-2 eutils
+inherit kernel-2
 detect_version
 detect_arch
 
@@ -17,10 +17,6 @@ IUSE="deblob"
 
 DESCRIPTION="Full sources including the Gentoo patchset for the ${KV_MAJOR}.${KV_MINOR} kernel tree"
 SRC_URI="${KERNEL_URI} ${GENPATCHES_URI} ${ARCH_URI}"
-
-src_prepare() {
-	epatch "${FILESDIR}/broadcom-wireless-3.8-kernel.patch"
-}
 
 pkg_postinst() {
 	kernel-2_pkg_postinst
