@@ -45,7 +45,7 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 
-	version_is_at_least 4.6.0 $(gcc-fullversion) || die "${PN} needs >=gcc-4.6.0 to compile."
+	version_is_at_least 4.6.0 $(gcc-fullversion) || die "${PN} needs >=gcc-4.6.0 set to compile."
 
 	if has_version "=sys-devel/gcc-4.8.0"; then
 		epatch "${FILESDIR}"/${PN}-emu-${PV}-gcc-4.8.patch
