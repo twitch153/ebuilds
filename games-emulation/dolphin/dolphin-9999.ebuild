@@ -6,7 +6,7 @@ EAPI=5
 
 WX_GTK_VER="2.9"
 
-inherit cmake-utils eutils pax-utils wxwidgets games
+inherit cmake-utils eutils pax-utils toolchain-funcs versionator wxwidgets games
 
 if [[ ${PV} == 9999* ]]
 then
@@ -52,6 +52,9 @@ DEPEND="${RDEPEND}
 	"
 
 src_prepare() {
+	
+	version_is_at_least 4.6.0 $(gcc-fullversion) || die "${PN} cannot compile with gcc < 4.6.0"
+
 	# Remove automatic dependencies to prevent building without flags enabled.
 	if use !alsa; then
 		sed -i -e '^/include(FindALSA/d' CMakeLists.txt || die
