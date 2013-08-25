@@ -45,7 +45,7 @@ src_install() {
 	keepdir /usr/share/webapps
 	keepdir /var/db/webapps
 
-	dodoc AUTHORS TODO
+	dodoc AUTHORS
 	doman doc/*.[58]
 	dohtml doc/*.[58].html
 }
