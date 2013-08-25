@@ -53,7 +53,7 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	
-	version_is_at_least 4.6.0 $(gcc-fullversion) || die "${PN} cannot compile with gcc < 4.6.0"
+	version_is_at_least 4.6.0 $(gcc-fullversion) || die "${PN} cannot compile with gcc $(gcc-fullversion)"
 
 	# Remove automatic dependencies to prevent building without flags enabled.
 	if use !alsa; then
