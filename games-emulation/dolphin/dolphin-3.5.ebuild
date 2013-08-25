@@ -6,7 +6,7 @@ EAPI=5
 
 WX_GTK_VER="2.9"
 
-inherit cmake-utils eutils flag-o-matic pax-utils toolchain-funcs wxwidgets games
+inherit cmake-utils eutils flag-o-matic pax-utils toolchain-funcs versionator wxwidgets games
 
 DESCRIPTION="Dolphin is a Gamecube and Wii game emulator"
 HOMEPAGE="http://www.dolphin-emulator.com/"
@@ -44,6 +44,8 @@ DEPEND="${RDEPEND}
 	"
 
 src_prepare() {
+
+	version_is_at_least 4.6.0 $(gcc-fullversion) || die "${PN} cannot build with gcc <4.6.0"
 
 	if has_version "=sys-devel/gcc-4.8.0"; then
 		epatch "${FILESDIR}"/${PN}-emu-${PV}-gcc-4.8.patch
