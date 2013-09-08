@@ -29,7 +29,6 @@ RDEPEND=">=media-libs/glew-1.6
 	>=media-libs/libsdl-1.2[joystick]
 	<media-libs/libsfml-2.0
 	>=net-libs/miniupnpc-1.8
-	net-libs/polarssl[haveged]
 	sys-libs/readline
 	x11-libs/libXext
 	x11-libs/libXrandr
@@ -80,10 +79,13 @@ src_prepare() {
 	# - SOIL: The sources are not public.
 	# - Bochs-disasm: Don't know what it is.
 	# - CLRun: Part of OpenCL
+	# - polarssl: The current polarssl doesn't have havege support.
 	mv Externals/SOIL . || die
 	mv Externals/Bochs_disasm . || die
 	mv Externals/CLRun . || die
+	mv Externals/polarssl . || die
 	rm -r Externals/* || die
+	mv polarssl Externals || die
 	mv CLRun Externals || die
 	mv Bochs_disasm Externals || die
 	mv SOIL Externals || die
