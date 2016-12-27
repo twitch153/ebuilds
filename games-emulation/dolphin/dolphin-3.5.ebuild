@@ -10,7 +10,7 @@ inherit cmake-utils eutils flag-o-matic pax-utils toolchain-funcs versionator wx
 
 DESCRIPTION="Dolphin is a Gamecube and Wii game emulator"
 HOMEPAGE="http://www.dolphin-emulator.com/"
-SRC_URI="http://${PN}-emu.googlecode.com/files/${P}-src.zip"
+SRC_URI="https://github.com/${PN}-emu/${PN}/archive/${PV}.zip -> ${P}.zip"
 
 LICENSE="GPL-2"
 SLOT="0"
