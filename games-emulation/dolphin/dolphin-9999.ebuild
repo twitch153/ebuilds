@@ -10,11 +10,11 @@ inherit cmake-utils eutils pax-utils toolchain-funcs versionator wxwidgets games
 
 if [[ ${PV} == 9999* ]]
 then
-	EGIT_REPO_URI="https://code.google.com/p/dolphin-emu/"
+	EGIT_REPO_URI="https://github.com/dolphin-emu/dolphin"
 	inherit git-2
 	KEYWORKD=""
 else
-	SRC_URI="http://${PN}-emu.googlecode.com/files/${P}-src.zip"
+	SRC_URI="https://github.com/${PN}-emu/${PN}/archive/${PV}.zip -> ${P}.zip"
 	KEYWORDS="~amd"
 fi
 
